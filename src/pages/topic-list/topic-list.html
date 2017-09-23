@@ -1,0 +1,39 @@
+<ion-fab bottom right edge fixed>
+  <button ion-fab mini (click)="addClick()"><ion-icon name="add"></ion-icon></button>
+</ion-fab>
+<ion-list>
+  <ion-card *ngFor="let topic of topicList" (click)='goTopicDetail(topic.topic_id)'>
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="topic.userAvatar">
+      </ion-avatar>
+      <h2>{{topic.user_nick_name}}</h2>
+      <p class="board">{{topic.board_name}}</p>
+    </ion-item>
+
+    <ion-card-content>
+      <p class="topic_title">{{topic.title}}</p>
+      <p class="topic_subject">{{topic.subject}}</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button color="primary" clear small icon-start>
+            <ion-icon name='thumbs-up'></ion-icon>
+            {{topic.recommendAdd}}
+          </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button color="primary" clear small icon-start>
+            <ion-icon name='text'></ion-icon>
+            {{topic.replies}}
+          </button>
+      </ion-col>
+      <ion-col align-self-center text-center>
+        <ion-note>
+          {{topic.last_reply_date | date :'mm-dd'}} ago
+        </ion-note>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-list>

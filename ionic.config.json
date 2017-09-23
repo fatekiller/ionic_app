@@ -1,0 +1,12 @@
+{
+  "name": "ionic_app1",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [{
+    "path": "/mobcent",
+    "proxyUrl": "http://bbs.uestc.edu.cn/mobcent"
+  }]
+}

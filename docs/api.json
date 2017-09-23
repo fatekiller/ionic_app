@@ -1,0 +1,889 @@
+[
+  //登录
+  {
+    url: 'http://bbs.uestc.edu.cn/mobcent/app/web/index.php?r=user/login',
+    method: 'post',
+    "params": [{
+        name: "username",
+        type: "string",
+        required: "yes",
+        description: "用户名"
+      },
+      {
+        name: "password",
+        type: "string",
+        required: "yes",
+        description: "密码"
+      },
+    ],
+    response: {
+      "rs": 1,
+      "errcode": "",
+      "head": {
+        "errCode": "00000000",
+        "errInfo": "调用成功,没有任何错误",
+        "version": "2.6.1.7",
+        "alert": 0
+      },
+      "body": {
+        "externInfo": {
+          "padding": ""
+        }
+      },
+      "isValidation": 0,
+      "token": "",
+      "secret": "",
+      "score": 143,
+      "uid": 173737,
+      "userName": "",
+      "avatar": "http://bbs.uest.edu.cn/uc_server/avatar.php?uid=&size=middle",
+      "gender": 1,
+      "userTitle": "河蟹 (Lv.3)",
+      "repeatList": [],
+      "verify": [],
+      "creditShowList": [{
+          "type": "credits",
+          "title": "积分",
+          "data": 143
+        },
+        {
+          "type": "extcredits2",
+          "title": "水滴",
+          "data": 158
+        }
+      ],
+      "mobile": "",
+      "groupid": 10
+    }
+  },
+  //获取指定板块信息
+  {
+    url: 'http://bbs.uestc.edu.cn/mobcent/app/web/index.php?r=forum/forumlist',
+    method: 'post',
+    params: [{
+        name: "username",
+        type: "string",
+        required: "yes",
+        description: "用户名"
+      },
+      {
+        name: "password",
+        type: "string",
+        required: "yes",
+        description: "密码"
+      },
+      {
+        name: "fid",
+        type: "string",
+        required: "no",
+        description: "板块id"
+      }
+      //不写版块id返回所有板块
+    ],
+    response: {
+      "rs": 1,
+      "errcode": "",
+      "head": {
+        "errCode": "00000000",
+        "errInfo": "\u8c03\u7528\u6210\u529f,\u6ca1\u6709\u4efb\u4f55\u9519\u8bef",
+        "version": "2.6.1.7",
+        "alert": 0
+      },
+      "body": {
+        "externInfo": {
+          "padding": ""
+        }
+      },
+      "list": [{
+        "board_category_id": 20, //fid 板块id
+        "board_category_name": "\u5b66\u672f\u4ea4\u6d41", //板块名称
+        "board_category_type": 1, //分类类型，当查询结果为板块时为2，查询结果为二级板块时为1,例如fid=20时查询结果学术交流此值为1，当未指定fid的时候返回所有一级板块，一级板块的category_id为2，具体参见 获取所有板块
+        "description": "",
+        "icon": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_20_icon.png",
+        "td_posts_num": "0",
+        "topic_total_num": "23827",
+        "posts_total_num": "180125",
+        "is_focus": 0,
+        //子版块列表，注意板块目前发现有三级，以此板块为例，成电校园为1级，学术交流为二级，iEEE为三级，接下来的描述以此为准
+        "board_list": [{
+          "board_id": 342, //板块id
+          "board_name": "IEEE\u8ba8\u8bba\u533a", //板块名称
+          "description": "", //描述
+          "board_child": 0, //是否有子版块
+          "board_img": "", //板块图片
+          "last_posts_date": "1503813343000", //最后发帖时间
+          "board_content": 1, //是否为空版块（不能发帖，只有子版块，例如学院在线）
+          "forumRedirect": "",
+          "favNum": 2, //收藏数量
+          "td_posts_num": 0, //今日发帖数
+          "topic_total_num": 60, //总发帖数
+          "posts_total_num": 554, //总回复数
+          "is_focus": 0 //当前用户是否关注了
+        }]
+      }],
+      "online_user_num": 0,
+      "td_visitors": 0
+    }
+  },
+  //获取所有
+  {
+    url: 'http://bbs.uestc.edu.cn/mobcent/app/web/index.php?r=forum/forumlist',
+    method: 'post',
+    params: [{
+        name: "accessToken",
+        type: "string",
+        required: "yes",
+        description: "口令"
+      }, {
+        name: "accessSecret",
+        type: "string",
+        required: "yes",
+        description: "密钥"
+      }
+      //不写版块id返回所有板块
+    ],
+    response: {
+      "rs": 1,
+      "errcode": "",
+      "head": {
+        "errCode": "00000000",
+        "errInfo": "\u8c03\u7528\u6210\u529f,\u6ca1\u6709\u4efb\u4f55\u9519\u8bef",
+        "version": "2.6.1.7",
+        "alert": 0
+      },
+      "body": {
+        "externInfo": {
+          "padding": ""
+        }
+      },
+      "list": [{
+          "board_category_id": 273, //板块id
+          "board_category_name": "\u6210\u7535\u6821\u56ed", //板块名称
+          "board_category_type": 2, //板块类型
+          //二级版块列表
+          "board_list": [{
+              "board_id": 174, //上个api中的fid
+              "board_name": "\u5c31\u4e1a\u521b\u4e1a",
+              "description": "",
+              "board_child": 1, //是否有子板块
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_174_icon.png",
+              "last_posts_date": "1504934443000", //最新发帖时间
+              "board_content": 1, //是否是空板块
+              "forumRedirect": "",
+              "favNum": 539, //关注数量
+              "td_posts_num": 66, //今日发帖量
+              "topic_total_num": 81778, //帖子数量
+              "posts_total_num": 870334, //回复数量
+              "is_focus": 0 //是否收藏了本板块
+            },
+            {
+              "board_id": 20,
+              "board_name": "\u5b66\u672f\u4ea4\u6d41",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_20_icon.png",
+              "last_posts_date": "1504929906000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 70,
+              "td_posts_num": 5,
+              "topic_total_num": 105928,
+              "posts_total_num": 936227,
+              "is_focus": 0
+            },
+            {
+              "board_id": 219,
+              "board_name": "\u51fa\u56fd\u7559\u5b66",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_219_icon.png",
+              "last_posts_date": "1504934141000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 115,
+              "td_posts_num": 7,
+              "topic_total_num": 8830,
+              "posts_total_num": 102271,
+              "is_focus": 0
+            },
+            {
+              "board_id": 45,
+              "board_name": "\u60c5\u611f\u4e13\u533a",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_45_icon.png",
+              "last_posts_date": "1504933316000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 114,
+              "td_posts_num": 13,
+              "topic_total_num": 20669,
+              "posts_total_num": 726614,
+              "is_focus": 0
+            },
+            {
+              "board_id": 309,
+              "board_name": "\u6210\u7535\u9510\u8bc4",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_309_icon.png",
+              "last_posts_date": "1504934220000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 17,
+              "td_posts_num": 6,
+              "topic_total_num": 91363,
+              "posts_total_num": 1253148,
+              "is_focus": 0
+            },
+            {
+              "board_id": 236,
+              "board_name": "\u6821\u56ed\u70ed\u70b9",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_236_icon.png",
+              "last_posts_date": "1504933469000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 40,
+              "td_posts_num": 94,
+              "topic_total_num": 21445,
+              "posts_total_num": 368314,
+              "is_focus": 0
+            },
+            {
+              "board_id": 225,
+              "board_name": "\u4ea4\u901a\u51fa\u884c",
+              "description": "--- \u3010 \u62fc\u8f66\u8bf7\u8fdb\u5165\u5b50\u7248\u5757\u62fc\u8f66\u540c\u884c\u53d1\u5e16 \u3011 ---",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_225_icon.png",
+              "last_posts_date": "1504528788000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 22,
+              "td_posts_num": 0,
+              "topic_total_num": 12489,
+              "posts_total_num": 94650,
+              "is_focus": 0
+            },
+            {
+              "board_id": 109,
+              "board_name": "\u6210\u7535\u8f68\u8ff9",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_109_icon.png",
+              "last_posts_date": "1504419534000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 9,
+              "td_posts_num": 0,
+              "topic_total_num": 3415,
+              "posts_total_num": 115178,
+              "is_focus": 0
+            },
+            {
+              "board_id": 382,
+              "board_name": "\u8003\u8bd5\u4e13\u533a",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_382_icon.png",
+              "last_posts_date": "1504933127000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 27,
+              "td_posts_num": 9,
+              "topic_total_num": 3278,
+              "posts_total_num": 47315,
+              "is_focus": 0
+            },
+            {
+              "board_id": 17,
+              "board_name": "\u540c\u57ce\u540c\u4e61",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_17_icon.png",
+              "last_posts_date": "1504867461000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 7,
+              "td_posts_num": 0,
+              "topic_total_num": 2874,
+              "posts_total_num": 50300,
+              "is_focus": 0
+            },
+            {
+              "board_id": 237,
+              "board_name": "\u6bd5\u4e1a\u611f\u8a00",
+              "description": "",
+              "board_child": 0,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_237_icon.png",
+              "last_posts_date": "1504366408000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 11,
+              "td_posts_num": 0,
+              "topic_total_num": 790,
+              "posts_total_num": 21849,
+              "is_focus": 0
+            },
+            {
+              "board_id": 326,
+              "board_name": "\u65b0\u751f\u4e13\u533a",
+              "description": "\u6e05\u6c34\u6cb3\u7554\u6b22\u8fce 2016 \u7ea7\u65b0\u751f\uff01",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_326_icon.png",
+              "last_posts_date": "1504931835000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 25,
+              "td_posts_num": 6,
+              "topic_total_num": 1597,
+              "posts_total_num": 19941,
+              "is_focus": 0
+            }
+          ]
+        },
+        {
+          "board_category_id": 95,
+          "board_category_name": "\u79d1\u6280\u4ea4\u6d41",
+          "board_category_type": 2,
+          "board_list": [{
+              "board_id": 316,
+              "board_name": "\u81ea\u7136\u79d1\u5b66",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_316_icon.png",
+              "last_posts_date": "1504881380000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 8,
+              "td_posts_num": 0,
+              "topic_total_num": 469,
+              "posts_total_num": 6793,
+              "is_focus": 0
+            },
+            {
+              "board_id": 258,
+              "board_name": "\u524d\u7aef\u4e4b\u7f8e",
+              "description": "",
+              "board_child": 0,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_258_icon.png",
+              "last_posts_date": "1504888014000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 34,
+              "td_posts_num": 1,
+              "topic_total_num": 434,
+              "posts_total_num": 4414,
+              "is_focus": 0
+            },
+            {
+              "board_id": 211,
+              "board_name": "\u79d1\u6280\u8d44\u8baf",
+              "description": "",
+              "board_child": 0,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_211_icon.png",
+              "last_posts_date": "1504273594000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 7,
+              "td_posts_num": 0,
+              "topic_total_num": 9534,
+              "posts_total_num": 66585,
+              "is_focus": 0
+            },
+            {
+              "board_id": 272,
+              "board_name": "\u6570\u5b57\u524d\u7aef",
+              "description": "",
+              "board_child": 0,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_272_icon.png",
+              "last_posts_date": "1504850658000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 24,
+              "td_posts_num": 0,
+              "topic_total_num": 345,
+              "posts_total_num": 3486,
+              "is_focus": 0
+            },
+            {
+              "board_id": 66,
+              "board_name": "\u7535\u8111FAQ",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_66_icon.png",
+              "last_posts_date": "1504915337000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 7,
+              "td_posts_num": 2,
+              "topic_total_num": 48248,
+              "posts_total_num": 533546,
+              "is_focus": 0
+            },
+            {
+              "board_id": 108,
+              "board_name": "\u786c\u4ef6\u6570\u7801",
+              "description": "",
+              "board_child": 0,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_108_icon.png",
+              "last_posts_date": "1504365364000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 8,
+              "td_posts_num": 0,
+              "topic_total_num": 18664,
+              "posts_total_num": 244402,
+              "is_focus": 0
+            },
+            {
+              "board_id": 99,
+              "board_name": "Unix\/Linux",
+              "description": "",
+              "board_child": 0,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_99_icon.png",
+              "last_posts_date": "1504885833000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 50,
+              "td_posts_num": 0,
+              "topic_total_num": 9526,
+              "posts_total_num": 129049,
+              "is_focus": 0
+            },
+            {
+              "board_id": 70,
+              "board_name": "\u7a0b\u5e8f\u5458",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_70_icon.png",
+              "last_posts_date": "1504922478000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 104,
+              "td_posts_num": 1,
+              "topic_total_num": 16259,
+              "posts_total_num": 176517,
+              "is_focus": 0
+            },
+            {
+              "board_id": 121,
+              "board_name": "\u7535\u5b50\u8bbe\u8ba1",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_121_icon.png",
+              "last_posts_date": "1504923469000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 25,
+              "td_posts_num": 2,
+              "topic_total_num": 11087,
+              "posts_total_num": 107793,
+              "is_focus": 0
+            }
+          ]
+        },
+        {
+          "board_category_id": 203,
+          "board_category_name": "\u4f11\u95f2\u5a31\u4e50",
+          "board_category_type": 2,
+          "board_list": [{
+              "board_id": 25,
+              "board_name": "\u6c34\u624b\u4e4b\u5bb6",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_25_icon.png",
+              "last_posts_date": "1504933717000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 197,
+              "td_posts_num": 84,
+              "topic_total_num": 599661,
+              "posts_total_num": 15730339,
+              "is_focus": 0
+            },
+            {
+              "board_id": 370,
+              "board_name": "\u5403\u559d\u73a9\u4e50",
+              "description": "",
+              "board_child": 0,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_370_icon.png",
+              "last_posts_date": "1504933681000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 18,
+              "td_posts_num": 14,
+              "topic_total_num": 62245,
+              "posts_total_num": 1148563,
+              "is_focus": 0
+            },
+            {
+              "board_id": 244,
+              "board_name": "\u6210\u7535\u9a91\u8ff9",
+              "description": "",
+              "board_child": 0,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_244_icon.png",
+              "last_posts_date": "1504886101000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 64,
+              "td_posts_num": 0,
+              "topic_total_num": 8878,
+              "posts_total_num": 156764,
+              "is_focus": 0
+            },
+            {
+              "board_id": 55,
+              "board_name": "\u89c6\u89c9\u827a\u672f",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_55_icon.png",
+              "last_posts_date": "1504422079000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 32,
+              "td_posts_num": 0,
+              "topic_total_num": 19582,
+              "posts_total_num": 440931,
+              "is_focus": 0
+            },
+            {
+              "board_id": 115,
+              "board_name": "\u519b\u4e8b\u56fd\u9632",
+              "description": "",
+              "board_child": 0,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_115_icon.png",
+              "last_posts_date": "1504426818000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 14,
+              "td_posts_num": 0,
+              "topic_total_num": 14538,
+              "posts_total_num": 184695,
+              "is_focus": 0
+            },
+            {
+              "board_id": 334,
+              "board_name": "\u60c5\u7cfb\u821e\u7f18",
+              "description": "",
+              "board_child": 0,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_334_icon.png",
+              "last_posts_date": "1504932242000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 33,
+              "td_posts_num": 1,
+              "topic_total_num": 10446,
+              "posts_total_num": 428937,
+              "is_focus": 0
+            },
+            {
+              "board_id": 74,
+              "board_name": "\u97f3\u4e50\u7a7a\u95f4",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_74_icon.png",
+              "last_posts_date": "1504882543000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 34,
+              "td_posts_num": 0,
+              "topic_total_num": 25892,
+              "posts_total_num": 305664,
+              "is_focus": 0
+            },
+            {
+              "board_id": 114,
+              "board_name": "\u6587\u4eba\u58a8\u5ba2",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_114_icon.png",
+              "last_posts_date": "1504454527000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 17,
+              "td_posts_num": 0,
+              "topic_total_num": 7082,
+              "posts_total_num": 124041,
+              "is_focus": 0
+            },
+            {
+              "board_id": 118,
+              "board_name": "\u4f53\u575b\u98ce\u4e91",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_118_icon.png",
+              "last_posts_date": "1504505077000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 13,
+              "td_posts_num": 0,
+              "topic_total_num": 42745,
+              "posts_total_num": 718474,
+              "is_focus": 0
+            },
+            {
+              "board_id": 149,
+              "board_name": "\u5f71\u89c6\u5929\u5730",
+              "description": "",
+              "board_child": 0,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_149_icon.png",
+              "last_posts_date": "1504869899000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 20,
+              "td_posts_num": 0,
+              "topic_total_num": 9677,
+              "posts_total_num": 145051,
+              "is_focus": 0
+            },
+            {
+              "board_id": 140,
+              "board_name": "\u52a8\u6f2b\u65f6\u4ee3",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_140_icon.png",
+              "last_posts_date": "1504925719000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 14,
+              "td_posts_num": 4,
+              "topic_total_num": 6361,
+              "posts_total_num": 190439,
+              "is_focus": 0
+            },
+            {
+              "board_id": 312,
+              "board_name": "\u8dd1\u6b65\u516c\u56ed",
+              "description": "",
+              "board_child": 0,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_312_icon.png",
+              "last_posts_date": "1504847847000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 58,
+              "td_posts_num": 0,
+              "topic_total_num": 967,
+              "posts_total_num": 28564,
+              "is_focus": 0
+            }
+          ]
+        },
+        {
+          "board_category_id": 201,
+          "board_category_name": "\u8df3\u86a4\u5e02\u573a",
+          "board_category_type": 2,
+          "board_list": [{
+              "board_id": 61,
+              "board_name": "\u4e8c\u624b\u4e13\u533a",
+              "description": "",
+              "board_child": 0,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_61_icon.png",
+              "last_posts_date": "1504934357000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 512,
+              "td_posts_num": 90,
+              "topic_total_num": 231108,
+              "posts_total_num": 1754803,
+              "is_focus": 0
+            },
+            {
+              "board_id": 255,
+              "board_name": "\u623f\u5c4b\u79df\u8d41",
+              "description": "",
+              "board_child": 0,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_255_icon.png",
+              "last_posts_date": "1504929821000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 148,
+              "td_posts_num": 10,
+              "topic_total_num": 8176,
+              "posts_total_num": 42736,
+              "is_focus": 0
+            },
+            {
+              "board_id": 111,
+              "board_name": "\u5e97\u94fa\u4e13\u533a",
+              "description": "",
+              "board_child": 0,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_111_icon.png",
+              "last_posts_date": "1504881890000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 15,
+              "td_posts_num": 0,
+              "topic_total_num": 4853,
+              "posts_total_num": 168137,
+              "is_focus": 0
+            }
+          ]
+        },
+        {
+          "board_category_id": 1,
+          "board_category_name": "\u7ad9\u52a1\u7ba1\u7406",
+          "board_category_type": 2,
+          "board_list": [{
+              "board_id": 2,
+              "board_name": "\u7ad9\u52a1\u516c\u544a",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_2_icon.png",
+              "last_posts_date": "1504884873000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 5,
+              "td_posts_num": 0,
+              "topic_total_num": 1719,
+              "posts_total_num": 191651,
+              "is_focus": 0
+            },
+            {
+              "board_id": 46,
+              "board_name": "\u7ad9\u52a1\u7efc\u5408",
+              "description": "",
+              "board_child": 1,
+              "board_img": "http:\/\/bbs.uestc.edu.cn\/data\/attachment\/common\/star\/common_46_icon.png",
+              "last_posts_date": "1504866138000",
+              "board_content": 1,
+              "forumRedirect": "",
+              "favNum": 16,
+              "td_posts_num": 0,
+              "topic_total_num": 9140,
+              "posts_total_num": 118370,
+              "is_focus": 0
+            }
+          ]
+        }
+      ],
+      "online_user_num": 0,
+      "td_visitors": 0
+    }
+  },
+  //获取板块下所有帖子
+  {
+    url: 'http://bbs.uestc.edu.cn/mobcent/app/web/index.php?r=forum/topiclist',
+    method: "post",
+    params: [{
+        name: "username",
+        type: "string",
+        required: "yes",
+        description: "用户名"
+      },
+      {
+        name: "password",
+        type: "string",
+        required: "yes",
+        description: "密码"
+      },
+      {
+        name: "fid",
+        type: "string",
+        required: "no",
+        description: "板块id"
+      },
+      {
+        name: "page",
+        type: "string",
+        required: "yes",
+        description: "分页起始页码，从1开始"
+      },
+      {
+        name: "pageSize",
+        type: "string",
+        required: "no",
+        description: "分页单页总数"
+      }
+      //更多参数查看：https://github.com/UESTC-BBS/API-Docs/wiki/Mobcent-API#forumtopiclist
+    ],
+    response: {
+      "rs": 1,
+      "errcode": "",
+      "head": {
+        "errCode": "00000000",
+        "errInfo": "调用成功,没有任何错误",
+        "version": "2.6.1.7",
+        "alert": 0
+      },
+      "body": {
+        "externInfo": {
+          "padding": ""
+        }
+      },
+      "newTopicPanel": [{
+        "type": "normal",
+        "action": "",
+        "title": "发表帖子"
+      }],
+      "classificationTop_list": [],
+      "classificationType_list": [],
+      "isOnlyTopicType": 0,
+      "anno_list": [],
+      "list": [{
+          "board_id": 255, //版块id
+          "board_name": "房屋租赁", //板块名称
+          "topic_id": 1682286, //帖子id
+          "type": "normal", //帖子类型
+          "title": "合院两室一厅出租", //标题
+          "user_id": 162469, //用户id
+          "user_nick_name": "sweatpea", //昵称
+          //头像
+          "userAvatar": "http://bbs.uestc.edu.cn/uc_server/avatar.php?uid=162469&size=middle",
+          "last_reply_date": "1504936381000", //最后回复时间
+          "vote": 0, //是否是投票帖
+          "hot": 0,
+          "hits": 30, //查看次数
+          "replies": 3,
+          "essence": 0,
+          "top": 0,
+          "status": 32,
+          "subject": "合院的两室一厅，1500.  有意联系：18908032",
+          "pic_path": "",
+          "ratio": "1",
+          "gender": 0,
+          "userTitle": "蝌蚪 (Lv.1)",
+          "recommendAdd": 0,
+          "special": 0,
+          "isHasRecommendAdd": 0,
+          "imageList": [],
+          "sourceWebUrl": "http://bbs.uestc.edu.cn/forum.php?mod=viewthread&tid=1682286", //帖子详情
+          "verify": []
+        },
+        {
+          "board_id": 25,
+          "board_name": "水手之家",
+          "topic_id": 1682295,
+          "type": "normal",
+          "title": "一等洋人二等官",
+          "user_id": 189545,
+          "user_nick_name": "司空临风",
+          "userAvatar": "http://bbs.uestc.edu.cn/uc_server/avatar.php?uid=189545&size=middle",
+          "last_reply_date": "1504936377000",
+          "vote": 0,
+          "hot": 0,
+          "hits": 116,
+          "replies": 3,
+          "essence": 0,
+          "top": 0,
+          "status": 32800,
+          "subject": "听说你电给留学生免费提供冰箱了\ufffc  引用浪潮的一篇文章吧",
+          "pic_path": "",
+          "ratio": "1",
+          "gender": 0,
+          "userTitle": "蝌蚪 (Lv.1)",
+          "recommendAdd": 0,
+          "special": 0,
+          "isHasRecommendAdd": 0,
+          "imageList": [],
+          "sourceWebUrl": "http://bbs.uestc.edu.cn/forum.php?mod=viewthread&tid=1682295",
+          "verify": []
+        }
+      ],
+      "page": 1,
+      "has_next": 1,
+      "total_num": 1533587
+    }
+  }
+]

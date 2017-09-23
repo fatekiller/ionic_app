@@ -1,0 +1,14 @@
+<ion-content>
+  <ng-content>
+  </ng-content>
+  <ion-refresher (ionRefresh)="refreshTopic_func($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-infinite-scroll (ionInfinite)="loadMoreTopic_func($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

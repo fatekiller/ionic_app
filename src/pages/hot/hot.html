@@ -1,0 +1,41 @@
+<!--
+  Generated template for the HotPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="type">
+      <ion-segment-button value="hot">
+        {{"hot.hot" | translate}}
+      </ion-segment-button>
+      <ion-segment-button value="new">
+        {{"hot.new" | translate}}
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content [ngSwitch]="type">
+  <!-- <ion-refresher (ionRefresh)="refreshData($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+
+    </ion-refresher-content>
+  </ion-refresher> -->
+  <list-ref-load (refreshTopic)="refreshData($event)" (loadMoreTopic)="getData($event)">
+    <div *ngSwitchCase="'hot'">
+      <page-topic-list *ngSwitchCase="'hot'" [topicList]='hotTopicList' (addTopic)="addTopic($event)"></page-topic-list>
+    </div>
+    <div *ngSwitchCase="'new'">
+      <page-topic-list [topicList]='newTopicList'></page-topic-list>
+    </div>
+    <!-- <ion-infinite-scroll (ionInfinite)="getData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+  </list-ref-load> -->
+
+</ion-content>

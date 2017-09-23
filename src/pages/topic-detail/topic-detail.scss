@@ -1,0 +1,35 @@
+page-topic-detail {
+  ion-content {
+    margin: 0px
+  }
+  p.board {
+    font-size: $font_size3;
+    color: $font_tip_color;
+  }
+  p.topic_title {
+    text-align: left;
+    text-indent: 10px;
+    display: block;
+    font-size: $font_size1;
+    color: $font_color1;
+    white-space: normal
+  }
+  p.topic_content_text {
+    word-break: break-all;
+    white-space: normal;
+  }
+  i.gender {
+    position: relative;
+    left: 10px;
+    font-size: 14px;
+  }
+  i.fa-mars {
+    color: lightskyblue
+  }
+  i.fa-venus {
+    color: pink
+  }
+  h2.comment_username {
+    display: inline-block;
+  }
+}

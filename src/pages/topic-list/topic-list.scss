@@ -1,0 +1,24 @@
+page-topic-list {
+  p.board {
+    font-size: $font_size3;
+    color: $font_tip_color;
+  }
+  p.topic_title {
+    text-align: left;
+    display: block;
+    font-size: $font_size2;
+    color: $font_color1;
+    white-space: normal
+  }
+  p.topic_subject {
+    text-align: left;
+    display: block;
+    font-size: $font_size2s;
+    color: $font_color2;
+    white-space: normal
+  }
+  ion-fab[bottom][right] {
+    position: fixed;
+    bottom: 80px;
+  }
+}

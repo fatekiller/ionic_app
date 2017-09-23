@@ -1,0 +1,41 @@
+page-personal {
+  ion-content {
+    margin-top: $content_margin_top;
+    .profile {
+      padding: 16px 10px;
+      ion-Avatar {
+        display: inline-block;
+        img.avatar {
+          width: $avatar_size;
+          height: $avatar_size;
+        }
+      }
+      .prop {
+        min-width: 60%;
+        position: relative;
+        left: 30px;
+        display: inline-block;
+        p {
+          margin: 5px 5px
+        }
+        p.name {
+          font-size: $font_size2;
+          color: $font_color1;
+        }
+        p.achieve {
+          font-size: $font_size3;
+          color: $font_tip_color
+        }
+        p.userTitle {
+          font-size: $font_size3;
+          color: $font_tip_color
+        }
+      }
+    }
+    ion-list {
+      button {
+        border-bottom: 1px $border_color solid;
+      }
+    }
+  }
+}

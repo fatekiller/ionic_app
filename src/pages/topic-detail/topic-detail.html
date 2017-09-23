@@ -1,0 +1,57 @@
+<!--
+  Generated template for the TopicDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>帖子</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-item>
+    <p class="topic_title">{{topicDetail.topic.title}}</p>
+  </ion-item>
+  <div class="topic_content">
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="topicDetail.topic.icon">
+      </ion-avatar>
+      <h2>{{topicDetail.topic.user_nick_name}}</h2>
+      <p class="board">{{topicDetail.forumName}}</p>
+    </ion-item>
+
+    <ion-card-content>
+      <ion-item class="content_infor" *ngFor="let info of topicDetail.topic.content" no-line>
+        <p *ngIf='info.type==0' class="topic_content_text">{{info.infor}}</p>
+        <a *ngIf='info.type==5' class="topic_content_link" href='{{info.url}}'>{{info.infor}}:{{info.desc}}</a>
+        <img *ngIf='info.type==1' class="topic_content_image" [src]="info.infor">
+      </ion-item>
+    </ion-card-content>
+  </div>
+  <div class="comment">
+    <ion-item class="comment" *ngFor='let comment of topicDetail.list'>
+      <ion-item class="comment_header">
+        <ion-avatar item-start>
+          <img [src]="comment.icon">
+        </ion-avatar>
+        <h2 class="comment_username">{{comment.reply_name}}</h2>
+        <i class="gender fa fa-mars fa-lg" *ngIf='comment.gender==1'></i>
+        <i class="gender fa fa-venus fa-lg" *ngIf='comment.gender==0'></i>
+        <p class="board">{{comment.userTitle}}</p>
+      </ion-item>
+      <ion-list class="reply_list">
+        <ion-item class="content_infor" *ngFor="let info of comment.reply_content" no-line>
+          <p *ngIf='info.type==0' class="topic_content_text">{{info.infor}}</p>
+          <a *ngIf='info.type==5' class="topic_content_link" href='{{info.url}}'>{{info.infor}}:{{info.desc}}</a>
+          <img *ngIf='info.type==1' class="topic_content_image" [src]="info.infor">
+        </ion-item>
+      </ion-list>
+    </ion-item>
+  </div>
+</ion-content>

@@ -1,0 +1,9 @@
+page-forum {
+  ion-select {
+    background: white;
+    z-index: 100;
+  }
+  ion-content {
+    margin-top: $content_margin_top;
+  }
+}

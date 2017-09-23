@@ -1,0 +1,17 @@
+{
+  "hot": {
+    "title": "热帖新帖",
+    "hot": "热帖",
+    "new": "新帖"
+  },
+  "forum": {
+    "title": "社区分类"
+  },
+  "personal": {
+    "title": "个人中心",
+    "clickLogin": "点击登陆"
+  },
+  "LAUNCH": {
+    "Name": "清水河畔"
+  }
+}
